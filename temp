@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> s ;
+    int temp;
+    bool findsub(int left,int right){
+        if(left==right)
+            return true;
+        int i;
+        for(i = left;i<right;i++){
+            if(s[i]>=s[right]){
+                temp = i;
+                if(i+1<right)
+                    if(s[i+1]<s[i])
+                        return false;
+            }
+            
+        }
+        return findsub(left,i-1)&&findsub(i,right-1);
+    }
+    bool VerifySquenceOfBST(vector<int> sequence) {
+        int len = sequence.size();
+        if(len  ==  0)
+            return true;
+        for(int i=0;i<len;i++)
+        {
+            s.push_back(sequence[i]);
+        }
+        return findsub(0,len-1);
+        
+    }
+};
