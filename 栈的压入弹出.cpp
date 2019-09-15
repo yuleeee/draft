@@ -16,7 +16,7 @@ public:
         int i =0;
         int j =0;
         
-        for(;j<len;j++)
+        for(;j<len;j++)//在遍历压栈时，遇到可弹出的先弹出
         {
             if(pushV[j]==popV[i])
             {
@@ -29,20 +29,14 @@ public:
             {
                 test.push(pushV[j]);
             }
-/*                if(j<len)test.push(pushV[j]);
-                while(!test.empty()&&test.top()==popV[i])
-                {
-                    test.pop();
-                    i++;
-                }
-            */
+
         }
-        while(!test.empty()&&test.top()==popV[i])
+        while(!test.empty()&&test.top()==popV[i])//遍历完成后，全部弹出
                 {
                     test.pop();
                     i++;
                 }
-        if(i!=len)
+        if(i!=len)//若未能完全弹出，则false
             return false;
         return true;
     }
